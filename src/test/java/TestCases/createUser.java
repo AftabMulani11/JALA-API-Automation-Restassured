@@ -9,17 +9,17 @@ import org.testng.annotations.*;
 import static io.restassured.RestAssured.*;
 
 public class createUser extends generateToken {
-
     @Test(priority = 1)
     public void createUser() {
         baseURI = prop.getProperty("UpdateUrl");
         boolean tokenValue = true;
+        Assert.assertTrue(tokenValue);
         String[] array = {"aws", "fullstack"};
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("first_name", "Aftab2");
         map.put("last_name", "Mulani2");
-        map.put("email", "aftab.m111@gmail.com");
-        map.put("mobile", "7888173864");
+        map.put("email", "aftab.m443@gmail.com");
+        map.put("mobile", "7897485594");
         map.put("dob", "2001-09-11");
         map.put("gender", "male");
         map.put("address", "Maharashtra");
@@ -35,8 +35,9 @@ public class createUser extends generateToken {
                 .body(jsonString).when()
                 .post(baseURI).then().extract().response();
         System.out.println("Message : " + response.jsonPath().getString("message"));
-        System.out.println("uesr Id is  : " + response.jsonPath().setRootPath("user").getString("id"));
-        Assert.assertTrue(tokenValue);
+        id = Integer.parseInt(response.jsonPath().setRootPath("user").getString("id"));
+        System.out.println("uesr Id is  : " + id);
+
         Assert.assertEquals(response.statusCode(), 201);
         Assert.assertEquals("User inserted successfully.", response.jsonPath().getString("message"));
     }

@@ -13,6 +13,6 @@ public class SearchUser extends generateToken{
                 .header("Authorization", "Bearer " +bearerToken)
                 .when()
                 .get(baseURI).then().extract().response();
-        System.out.println("Response Body: " + response.getBody().asString());
+        System.out.println("Response Body: " + response.getBody().asPrettyString());
     }
 }

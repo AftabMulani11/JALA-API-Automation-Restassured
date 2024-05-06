@@ -11,6 +11,7 @@ import static io.restassured.RestAssured.*;
 
 public class generateToken extends BaseTest {
     public static String bearerToken;
+    public static int id;
 
     @BeforeMethod
     public  void setupProperties() {
@@ -28,7 +29,7 @@ public class generateToken extends BaseTest {
         map.put("email", prop.getProperty("username"));
         map.put("password", prop.getProperty("password"));
         JSONObject json = new JSONObject(map);
-        Response response = given()
+        Response res = given()
                 .header("Accept", "application/json")
                 .contentType(ContentType.JSON)
                 .and()
@@ -36,10 +37,10 @@ public class generateToken extends BaseTest {
                 .post(baseURI).then()
                 .extract()
                 .response();
-        int statusCode = response.statusCode();
+        int statusCode = res.statusCode();
         if (statusCode == 200) {
 
-            bearerToken = response.jsonPath().getString("token");
+            bearerToken = res.jsonPath().getString("token");
             System.out.println("Token Value :" + bearerToken);
         }
         else {

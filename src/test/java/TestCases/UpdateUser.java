@@ -4,23 +4,23 @@ import java.util.*;
 import TokenGenerator.generateToken;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.apache.groovy.parser.antlr4.GroovyParser;
 import org.json.simple.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import static io.restassured.RestAssured.*;
 
-public class UpdateUser extends generateToken {
-    @Test(priority = 1)
+public class UpdateUser extends createUser {
+    @Test(priority = 2)
     public void search() {
-        int id = 590; //change the id according to you
         baseURI = (prop.getProperty("UpdateUrl") + "/" + id);
         boolean tokenValue = true;
         String[] array = {"aws", "fullstack"};
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("first_name", "aftab");
         map.put("last_name", "mulani");
-        map.put("email", "aftabmulani001@gmail.com");
-        map.put("mobile", "7972281954");
+        map.put("email", "aftabmulani00001@gmail.com");
+        map.put("mobile", "7972191954");
         map.put("dob", "2022-02-09");
         map.put("gender", "male");
         map.put("address", "Hyderabad");

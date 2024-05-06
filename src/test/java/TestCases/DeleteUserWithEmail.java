@@ -18,7 +18,7 @@ public class DeleteUserWithEmail extends generateToken {
         baseURI = prop.getProperty("UpdateUrl");
         boolean tokenValue = true;
         Map<String, Object> map = new HashMap<String, Object>();
-        map.put("email", "aftab.m111@gmail.com");
+        map.put("email", "aftab.m443@gmail.com");
         JSONObject json = new JSONObject(map);
         Response response = given()
                 .header("Authorization", "Bearer " +bearerToken)

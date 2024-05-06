@@ -1,13 +1,11 @@
 package TestCases;
-import TokenGenerator.generateToken;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import static io.restassured.RestAssured.*;
-public class DeleteUserWithId extends generateToken{
-    @Test(priority = 1)
+public class DeleteUserWithId extends UpdateUser{
+    @Test(priority = 3)
     public void delete(){
-        int id = 592; //change the id according to you
         baseURI = (prop.getProperty("UpdateUrl") + "/" + id);
         boolean tokenValue = true;
         Response response = given()
